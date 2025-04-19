@@ -45,13 +45,14 @@ function custom_contact_form_handler() {
 		wp_die( '❌ Spam detected.' );
 	}
 
-	// Sanitize and validate input fields
-	$name          = isset( $_POST['ccf_name'] ) ? sanitize_text_field( $_POST['ccf_name'] ) : '';
-	$email         = isset( $_POST['ccf_email'] ) ? sanitize_email( $_POST['ccf_email'] ) : '';
-	$subject       = isset( $_POST['ccf_subject'] ) ? sanitize_text_field( $_POST['ccf_subject'] ) : '';
-	$message       = isset( $_POST['ccf_message'] ) ? sanitize_textarea_field( $_POST['ccf_message'] ) : '';
-	$math_answer   = isset( $_POST['ccf_math'] ) ? intval( $_POST['ccf_math'] ) : 0;
+	// Sanitize and validate input fields based on the form's field names
+	$name           = isset( $_POST['userName'] ) ? sanitize_text_field( $_POST['userName'] ) : '';
+	$email          = isset( $_POST['userEmail'] ) ? sanitize_email( $_POST['userEmail'] ) : '';
+	$subject        = isset( $_POST['userSubject'] ) ? sanitize_text_field( $_POST['userSubject'] ) : '';
+	$message        = isset( $_POST['userMessage'] ) ? sanitize_textarea_field( $_POST['userMessage'] ) : '';
+	$math_answer    = isset( $_POST['ccf_math'] ) ? intval( $_POST['ccf_math'] ) : 0;
 	$correct_answer = isset( $_POST['ccf_math_answer'] ) ? intval( $_POST['ccf_math_answer'] ) : 0;
+
 
 	// Required fields check
 	if ( empty( $name ) || empty( $email ) || empty( $subject ) || empty( $message ) ) {
