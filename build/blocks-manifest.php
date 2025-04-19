@@ -50,11 +50,11 @@ return array(
 			),
 			'inputFontSize' => array(
 				'type' => 'string',
-				'default' => ''
+				'default' => '16px'
 			),
 			'labelFontSize' => array(
 				'type' => 'string',
-				'default' => ''
+				'default' => '18px'
 			),
 			'inputPadding' => array(
 				'type' => 'string',
@@ -62,15 +62,15 @@ return array(
 			),
 			'inputMarginTop' => array(
 				'type' => 'string',
-				'default' => ''
+				'default' => '5px'
 			),
 			'textareaHeight' => array(
 				'type' => 'string',
-				'default' => '100px'
+				'default' => '150px'
 			),
 			'inputGap' => array(
 				'type' => 'string',
-				'default' => ''
+				'default' => '5px'
 			)
 		)
 	)

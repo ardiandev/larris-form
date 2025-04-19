@@ -8,7 +8,7 @@
   \********************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/ct-form","version":"0.1.0","title":"Ct Form","category":"widgets","icon":"email","description":"Example block scaffolded with Create Block tool.","example":{},"supports":{"html":false,"spacing":{"margin":true,"padding":true},"color":{"background":true,"text":true},"align":true},"textdomain":"ct-form","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","render":"file:./render.php","viewScript":"file:./view.js","attributes":{"nameLabel":{"type":"string","default":"Your Name"},"subjectLabel":{"type":"string","default":"Your Subject"},"emailLabel":{"type":"string","default":"Your Email"},"messageLabel":{"type":"string","default":"Your Message"},"inputFontSize":{"type":"string","default":""},"labelFontSize":{"type":"string","default":""},"inputPadding":{"type":"string","default":"10px"},"inputMarginTop":{"type":"string","default":""},"textareaHeight":{"type":"string","default":"100px"},"inputGap":{"type":"string","default":""}}}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/ct-form","version":"0.1.0","title":"Ct Form","category":"widgets","icon":"email","description":"Example block scaffolded with Create Block tool.","example":{},"supports":{"html":false,"spacing":{"margin":true,"padding":true},"color":{"background":true,"text":true},"align":true},"textdomain":"ct-form","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","render":"file:./render.php","viewScript":"file:./view.js","attributes":{"nameLabel":{"type":"string","default":"Your Name"},"subjectLabel":{"type":"string","default":"Your Subject"},"emailLabel":{"type":"string","default":"Your Email"},"messageLabel":{"type":"string","default":"Your Message"},"inputFontSize":{"type":"string","default":"16px"},"labelFontSize":{"type":"string","default":"18px"},"inputPadding":{"type":"string","default":"10px"},"inputMarginTop":{"type":"string","default":"5px"},"textareaHeight":{"type":"string","default":"150px"},"inputGap":{"type":"string","default":"5px"}}}');
 
 /***/ }),
 
@@ -69,6 +69,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function Edit(props) {
+  const [name, setName] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_3__.useState)("John Doe");
+  const [subject, setSubject] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_3__.useState)("Meeting Invitation");
+  const [email, setEmail] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_3__.useState)("John@johndoe.com");
+  const [message, setMessage] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_3__.useState)("This is example of message form.");
   const {
     attributes,
     setAttributes
@@ -77,6 +81,7 @@ function Edit(props) {
     textareaHeight,
     inputGap,
     inputFontSize,
+    labelFontSize,
     inputPadding,
     inputMarginTop,
     nameLabel,
@@ -84,8 +89,6 @@ function Edit(props) {
     emailLabel,
     messageLabel
   } = attributes;
-  const [name, setName] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_3__.useState)("My First and Last Name");
-  const [message, setMessage] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_3__.useState)("");
   const handleInputGap = value => {
     setAttributes({
       inputGap: value
@@ -99,11 +102,10 @@ function Edit(props) {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.TextControl, {
           label: "Email Recipent",
           value: ""
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
-          children: "To send emails to providers like Gmail, Yahoo, or Hotmail, please install an SMTP plugin. Without it, this form can only send to email addresses on your own domain, such as yourname@yourdomain.com."
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("p", {
-          children: ["Learn how to set up the contact form and configure SMTP by reading the documentation: ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("a", {
+          children: ["Learn how to set up and style the contact form and configure SMTP by reading the documentation: ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("a", {
             href: "#",
+            target: "_blank",
             children: "View Guide"
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.TextControl, {
@@ -137,27 +139,25 @@ function Edit(props) {
           })
         })]
       })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, {
       group: "styles",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelBody, {
-        title: "Input Settings",
-        initialOpen: true,
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelBody, {
+        title: "Form Settings",
+        initialOpen: false,
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.TextControl, {
           label: "Label Font Size",
-          value: inputFontSize,
+          value: labelFontSize,
           onChange: value => setAttributes({
-            inputFontSize: value
+            labelFontSize: value
           }),
-          help: "Set the input height (e.g., 40px, 2em, etc.)",
-          className: "input-textcontrol"
+          help: "Set the input height (e.g., 40px, 2em, etc.)"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.TextControl, {
           label: "Input Font Size",
           value: inputFontSize,
           onChange: value => setAttributes({
             inputFontSize: value
           }),
-          help: "Set the input height (e.g., 40px, 2em, etc.)",
-          className: "input-textcontrol"
+          help: "Set the input height (e.g., 40px, 2em, etc.)"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.TextControl, {
           label: "Padding",
           value: inputPadding,
@@ -166,24 +166,60 @@ function Edit(props) {
               inputPadding: value
             });
           },
-          help: "You can set like 10px or 10px 30px",
-          className: "input-textcontrol"
+          help: "You can set like 10px or 10px 30px"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.TextControl, {
           label: "Margin Top",
           value: inputMarginTop,
           onChange: value => setAttributes({
             inputMarginTop: value
           }),
-          help: "Set the input height (e.g., 40px, 2em, etc.)",
-          className: "input-textcontrol"
+          help: "Set the input height (e.g., 40px, 2em, etc.)"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.TextControl, {
           label: "Gap",
           value: inputGap,
           onChange: handleInputGap,
-          help: "Set the input height (e.g., 40px, 2em, etc.)",
-          className: "input-textcontrol"
+          help: "Set the input height (e.g., 40px, 2em, etc.)"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.TextControl, {
+          label: "Textarea min height",
+          value: textareaHeight,
+          onChange: value => setAttributes({
+            textareaHeight: value
+          }),
+          help: "Set the input height (e.g., 40px, 2em, etc.)"
         })]
-      })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelBody, {
+        title: "Button Settings",
+        initialOpen: false,
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.TextControl, {
+          label: "Font Size",
+          value: textareaHeight,
+          onChange: value => setAttributes({
+            textareaHeight: value
+          }),
+          help: "Set the input height (e.g., 40px, 2em, etc.)"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.TextControl, {
+          label: "Padding",
+          value: textareaHeight,
+          onChange: value => setAttributes({
+            textareaHeight: value
+          }),
+          help: "Set the input height (e.g., 40px, 2em, etc.)"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.TextControl, {
+          label: "Color",
+          value: textareaHeight,
+          onChange: value => setAttributes({
+            textareaHeight: value
+          }),
+          help: "Set the input height (e.g., 40px, 2em, etc.)"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.TextControl, {
+          label: "Background",
+          value: textareaHeight,
+          onChange: value => setAttributes({
+            textareaHeight: value
+          }),
+          help: "Set the input height (e.g., 40px, 2em, etc.)"
+        })]
+      })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
       ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)(),
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("form", {
@@ -194,6 +230,9 @@ function Edit(props) {
               gap: inputGap
             },
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+              style: {
+                fontSize: labelFontSize
+              },
               htmlFor: "yourname",
               children: nameLabel
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
@@ -216,6 +255,9 @@ function Edit(props) {
               marginTop: inputMarginTop
             },
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+              style: {
+                fontSize: labelFontSize
+              },
               htmlFor: "yourname",
               children: subjectLabel
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
@@ -224,9 +266,9 @@ function Edit(props) {
                 fontSize: inputFontSize,
                 padding: inputPadding
               },
-              value: name,
+              value: subject,
               onChange: event => {
-                setName(event.target.value);
+                setSubject(event.target.value);
               },
               type: "text",
               id: "yourname",
@@ -238,6 +280,9 @@ function Edit(props) {
               marginTop: inputMarginTop
             },
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+              style: {
+                fontSize: labelFontSize
+              },
               htmlFor: "youremail",
               children: emailLabel
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
@@ -246,9 +291,9 @@ function Edit(props) {
                 fontSize: inputFontSize,
                 padding: inputPadding
               },
-              value: name,
+              value: email,
               onChange: event => {
-                setName(event.target.value);
+                setEmail(event.target.value);
               },
               type: "text",
               id: "youremail",
@@ -260,6 +305,9 @@ function Edit(props) {
               marginTop: inputMarginTop
             },
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+              style: {
+                fontSize: labelFontSize
+              },
               htmlFor: "yourmessage",
               children: messageLabel
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("textarea", {
@@ -273,6 +321,11 @@ function Edit(props) {
                 setMessage(event.target.value);
               }
             })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("li", {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+              className: "submitBtn",
+              children: "Submit"
+            })
           })]
         })
       })

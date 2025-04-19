@@ -45,11 +45,11 @@
 		},
 		"inputFontSize": {
 			"type": "string",
-			"default": ""
+			"default": "16px"
 		},
 		"labelFontSize": {
 			"type": "string",
-			"default": ""
+			"default": "18px"
 		},
 		"inputPadding": {
 			"type": "string",
@@ -57,15 +57,15 @@
 		},
 		"inputMarginTop": {
 			"type": "string",
-			"default": ""
+			"default": "5px"
 		},
 		"textareaHeight": {
 			"type": "string",
-			"default": "100px"
+			"default": "150px"
 		},
 		"inputGap": {
 			"type": "string",
-			"default": ""
+			"default": "5px"
 		}
 
 	}

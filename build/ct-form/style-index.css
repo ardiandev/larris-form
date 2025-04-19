@@ -22,4 +22,17 @@
   flex-direction: column;
 }
 
+input, textarea {
+  background-color: #fff;
+}
+
+.submitBtn {
+  background-color: black;
+  color: white;
+  padding: 10px 10px;
+  font-size: 18px;
+  border: none;
+  margin: 5px 0;
+}
+
 /*# sourceMappingURL=style-index.css.map*/
