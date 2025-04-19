@@ -1,4 +1,4 @@
-name: Deploy Larris Contact Form Plugin via FTP
+name: Deploy CT Contact Form
 
 on:
   push:
