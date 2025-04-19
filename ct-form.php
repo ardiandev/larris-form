@@ -92,3 +92,7 @@ function custom_contact_form_handler() {
 		wp_send_json_error( [ 'message' => '❌ Failed to send message.' ] );
 	}
 }
+
+
+add_action( 'wp_ajax_nopriv_custom_contact_form_handler', 'custom_contact_form_handler' );
+add_action( 'wp_ajax_custom_contact_form_handler', 'custom_contact_form_handler' );
