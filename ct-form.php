@@ -37,12 +37,12 @@ add_action( 'init', 'create_block_ct_form_block_init' );
 function custom_contact_form_handler() {
 	// Verify nonce
 	if ( ! isset( $_POST['ccf_nonce'] ) || ! wp_verify_nonce( $_POST['ccf_nonce'], 'ccf_form_nonce' ) ) {
-		wp_die( '❌ Security check failed.' );
+		wp_send_json_error( [ 'message' => '❌ Security check failed.' ] );
 	}
 
 	// Honeypot validation
 	if ( ! empty( $_POST['ccf_honeypot'] ) ) {
-		wp_die( '❌ Spam detected.' );
+		wp_send_json_error( [ 'message' => '❌ Spam detected.' ] );
 	}
 
 	// Sanitize and validate input fields based on the form's field names
@@ -53,20 +53,19 @@ function custom_contact_form_handler() {
 	$math_answer    = isset( $_POST['ccf_math'] ) ? intval( $_POST['ccf_math'] ) : 0;
 	$correct_answer = isset( $_POST['ccf_math_answer'] ) ? intval( $_POST['ccf_math_answer'] ) : 0;
 
-
 	// Required fields check
 	if ( empty( $name ) || empty( $email ) || empty( $subject ) || empty( $message ) ) {
-		wp_die( '❌ All fields are required.' );
+		wp_send_json_error( [ 'message' => '❌ All fields are required.' ] );
 	}
 
 	// Validate email
 	if ( ! is_email( $email ) ) {
-		wp_die( '❌ Invalid email address.' );
+		wp_send_json_error( [ 'message' => '❌ Invalid email address.' ] );
 	}
 
 	// Validate math CAPTCHA
 	if ( $math_answer !== $correct_answer ) {
-		wp_die( '❌ Incorrect answer to the math question.' );
+		wp_send_json_error( [ 'message' => '❌ Incorrect answer to the math question.' ] );
 	}
 
 	// Prepare email
@@ -84,18 +83,12 @@ function custom_contact_form_handler() {
 		$new_question  = "What is $num1 + $num2?";
 
 		// Send JSON response
-		header( 'Content-Type: application/json' );
-		echo json_encode( [
-			'status'       => 'success',
+		wp_send_json_success( [
 			'message'      => '✅ Message sent successfully!',
 			'new_question' => $new_question,
 			'new_answer'   => $new_answer,
 		] );
 	} else {
-		wp_die( '❌ Failed to send message.' );
+		wp_send_json_error( [ 'message' => '❌ Failed to send message.' ] );
 	}
-
-	wp_die(); // Terminate Ajax call
 }
-add_action( 'wp_ajax_nopriv_custom_contact_form_handler', 'custom_contact_form_handler' );
-add_action( 'wp_ajax_custom_contact_form_handler', 'custom_contact_form_handler' );
