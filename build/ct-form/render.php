@@ -3,16 +3,149 @@
  * @see https://github.com/WordPress/gutenberg/blob/trunk/docs/reference-guides/block-api/block-metadata.md#render
  */
 
-$inputHeight = $attributes["inputHeight"]
+$inputHeight = $attributes["inputHeight"];
+$inputGap = $attributes["inputGap"];
+$labelFontSize = $attributes["labelFontSize"];
+$inputFontSize = $attributes["inputFontSize"];
+$inputPadding = $attributes["inputPadding"];
+$inputMarginTop = $attributes["inputMarginTop"];
+$buttonFontSize = $attributes["buttonFontSize"];
+$buttonPadding = $attributes["buttonPadding"];
+$buttonTextColor = $attributes["buttonTextColor"];
+$buttonBackgroundColor = $attributes["buttonBackgroundColor"];
+$textareaHeight = $attributes["textareaHeight"];
 
+$nameLabel = $attributes["nameLabel"];
+$subjectLabel = $attributes["subjectLabel"];
+$emailLabel = $attributes["emailLabel"];
+$messageLabel = $attributes["messageLabel"];
+
+$num1 = rand(1, 10);
+$num2 = rand(1, 10);
+$answer = $num1 + $num2;
+$questionText = "$num1 + $num2";
 ?>
+
 <div <?php echo get_block_wrapper_attributes(); ?>>
-	<form action="">
-		<ul>
-			<li>
-				<label for="yourname">Your Name</label>
-				<input style="height: <?php echo esc_attr($inputHeight); ?>" value="" type="text" id='yourname' name="yourname" />
-			</li>
-		</ul>
-	</form>
+    <form id="formData" method="post">
+        <ul>
+            <li style="gap: <?php echo esc_attr($inputGap); ?>">
+                <label style="font-size: <?php echo esc_attr($labelFontSize); ?>" for="userName"><?php echo esc_html($nameLabel); ?></label>
+                <input style="font-size: <?php echo esc_attr($inputFontSize); ?>; padding: <?php echo esc_attr($inputPadding); ?>" type="text" id="userName" name="userName" required value="John Doe" />
+            </li>
+            <li style="gap: <?php echo esc_attr($inputGap); ?>">
+                <label style="font-size: <?php echo esc_attr($labelFontSize); ?>; margin-top: <?php echo esc_attr($inputMarginTop); ?>" for="userSubject"><?php echo esc_html($subjectLabel); ?></label>
+                <input style="font-size: <?php echo esc_attr($inputFontSize); ?>; padding: <?php echo esc_attr($inputPadding); ?>" type="text" id="userSubject" name="userSubject" required value="Job Offer" />
+            </li>
+            <li style="gap: <?php echo esc_attr($inputGap); ?>; margin-top: <?php echo esc_attr($inputMarginTop); ?>">
+                <label style="font-size: <?php echo esc_attr($labelFontSize); ?>" for="userEmail"><?php echo esc_html($emailLabel); ?></label>
+                <input style="font-size: <?php echo esc_attr($inputFontSize); ?>; padding: <?php echo esc_attr($inputPadding); ?>" type="email" id="userEmail" name="userEmail" required value="john@domain.com" />
+            </li>
+            <li style="gap: <?php echo esc_attr($inputGap); ?>; margin-top: <?php echo esc_attr($inputMarginTop); ?>">
+                <label style="font-size: <?php echo esc_attr($labelFontSize); ?>" for="userMessage"><?php echo esc_html($messageLabel); ?></label>
+                <textarea style="font-size: <?php echo esc_attr($inputFontSize); ?>; padding: <?php echo esc_attr($inputPadding); ?>; min-height: <?php echo esc_attr($textareaHeight); ?>" name="userMessage" id="userMessage" required>This is message</textarea>
+            </li>
+            <li class="larris-contact-form__item">
+                <label for="user-answer">
+                    What is <span id="math-question"><?php echo $questionText; ?></span>?
+                </label>
+                <input id="user-answer" class="larris-contact-form__input" type="text" name="ccf_math" required>
+                <input id="answer-key" type="hidden" name="ccf_math_answer" value="<?php echo $answer; ?>">
+                <p id="warning-input" style="color: red; display: none;">Incorrect answer. Please try again.</p>
+            </li>
+            <li>
+                <button type="submit" class="submitBtn" style="font-size: <?php echo esc_attr($buttonFontSize); ?>; padding: <?php echo esc_attr($buttonPadding); ?>; color: <?php echo esc_attr($buttonTextColor); ?>; background-color: <?php echo esc_attr($buttonBackgroundColor); ?>">Submit</button>
+            </li>
+        </ul>
+    </form>
+    <div id="ccf-response" class="larris-contact-form-response"></div>
 </div>
+
+<script>
+    const ajaxurl = "<?php echo esc_url(admin_url('admin-ajax.php')); ?>";
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const form = document.getElementById("formData");
+        const warningEl = document.querySelector("#warning-input");
+        const responseElement = document.getElementById("ccf-response");
+        const submitButton = document.querySelector(".submitBtn");
+
+        if (!form || !warningEl || !responseElement || !submitButton) {
+            console.error("❌ Required elements not found!");
+            return;
+        }
+
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            if (!checkUserAnswer()) {
+                console.log("❌ Incorrect answer. Showing warning.");
+                warningEl.style.display = "block";
+                return;
+            }
+
+            console.log("✅ Correct answer submitted");
+            warningEl.style.display = "none";
+
+            submitButton.disabled = true;
+
+            const formData = new FormData(form);
+            formData.append("action", "custom_contact_form_handler");
+
+            fetch(ajaxurl, {
+                method: "POST",
+                body: formData,
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    if (data.status !== "success") {
+                        console.error("❌ Server error:", data);
+                        responseElement.innerHTML = "An error occurred. Please try again later.";
+                        return;
+                    }
+
+                    responseElement.innerHTML = data.message;
+
+                    reloadMathQuestion(data.new_question, data.new_answer);
+
+                    form.reset();
+                    submitButton.disabled = false;
+                })
+                .catch((error) => {
+                    console.error("❌ Fetch error:", error);
+                    responseElement.innerHTML = "An error occurred. Please try again later.";
+                    submitButton.disabled = false;
+                });
+        });
+    });
+
+    function checkUserAnswer() {
+        const userAnswerEl = document.querySelector("#user-answer");
+        const answerKeyEl = document.querySelector("#answer-key");
+
+        if (!userAnswerEl || !answerKeyEl) {
+            console.error("❌ Required elements not found!");
+            return false;
+        }
+
+        return userAnswerEl.value.trim() === answerKeyEl.value.trim();
+    }
+
+    function reloadMathQuestion(question, answer) {
+        const mathQuestionEl = document.querySelector("#math-question");
+        const answerKeyEl = document.querySelector("#answer-key");
+        const userAnswerEl = document.querySelector("#user-answer");
+        const warningEl = document.querySelector("#warning-input");
+
+        if (!mathQuestionEl || !answerKeyEl || !userAnswerEl || !warningEl) {
+            console.error("❌ Required elements not found!");
+            return;
+        }
+
+        mathQuestionEl.innerHTML = question;
+        answerKeyEl.value = answer;
+        userAnswerEl.value = "";
+        warningEl.style.display = "none";
+        userAnswerEl.focus();
+    }
+</script>

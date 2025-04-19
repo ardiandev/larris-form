@@ -66,6 +66,22 @@
     "inputGap": {
       "type": "string",
       "default": "5px"
+    },
+    "buttonFontSize": {
+      "type": "string",
+      "default": "18px"
+    },
+    "buttonPadding": {
+      "type": "string",
+      "default": "10px"
+    },
+    "buttonTextColor": {
+      "type": "string",
+      "default": "#ffff"
+    },
+    "buttonBackgroundColor": {
+      "type": "string",
+      "default": "black"
     }
   }
 }

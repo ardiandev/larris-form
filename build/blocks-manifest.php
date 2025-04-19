@@ -71,6 +71,22 @@ return array(
 			'inputGap' => array(
 				'type' => 'string',
 				'default' => '5px'
+			),
+			'buttonFontSize' => array(
+				'type' => 'string',
+				'default' => '18px'
+			),
+			'buttonPadding' => array(
+				'type' => 'string',
+				'default' => '10px'
+			),
+			'buttonTextColor' => array(
+				'type' => 'string',
+				'default' => '#ffff'
+			),
+			'buttonBackgroundColor' => array(
+				'type' => 'string',
+				'default' => 'black'
 			)
 		)
 	)

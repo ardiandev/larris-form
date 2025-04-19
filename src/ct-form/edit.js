@@ -31,7 +31,7 @@ import './editor.scss';
  */
 
 import {useState, } from "@wordpress/element";
-import {TextControl ,PanelBody} from "@wordpress/components"
+import {TextControl ,PanelBody, ColorPalette} from "@wordpress/components"
 
 
 export default function Edit(props) {
@@ -52,7 +52,11 @@ export default function Edit(props) {
 		nameLabel,
 		subjectLabel,
 		emailLabel,
-		messageLabel
+		messageLabel,
+		buttonFontSize,
+		buttonPadding,
+		buttonTextColor,
+		buttonBackgroundColor
 	} = attributes;
 
 
@@ -138,33 +142,45 @@ export default function Edit(props) {
 				<PanelBody title="Button Settings" initialOpen={false}>
 					<TextControl
 						label="Font Size"
-						value={textareaHeight}
-						onChange={value => setAttributes({textareaHeight: value})}
+						value={buttonFontSize}
+						onChange={value => setAttributes({buttonFontSize: value})}
 						help="Set the input height (e.g., 40px, 2em, etc.)"
 					/>
 					<TextControl
 						label="Padding"
-						value={textareaHeight}
-						onChange={value => setAttributes({textareaHeight: value})}
+						value={buttonPadding}
+						onChange={value => setAttributes({buttonPadding: value})}
 						help="Set the input height (e.g., 40px, 2em, etc.)"
 					/>
-					<TextControl
-						label="Color"
-						value={textareaHeight}
-						onChange={value => setAttributes({textareaHeight: value})}
-						help="Set the input height (e.g., 40px, 2em, etc.)"
+					<p className='components-base-control__label button'>Text</p>
+					< ColorPalette
+						label="Text Color"
+						colors={[
+							{ name: 'white', color: '#ffff' },
+							{ name: 'black', color: '#000000' },
+						  ]}
+						value={buttonTextColor}
+						onChange={value => setAttributes({buttonTextColor: value})}
+
 					/>
-					<TextControl
-						label="Background"
-						value={textareaHeight}
-						onChange={value => setAttributes({textareaHeight: value})}
-						help="Set the input height (e.g., 40px, 2em, etc.)"
+					<p className='components-base-control__label button'>Background</p>
+					< ColorPalette
+						label="Text Color"
+						colors={[
+							{ name: 'black', color: '#000000' },
+							{ name: 'blue', color: '#007bff' },
+							{ name: 'yellow', color: '#FFB702' },
+						  ]}
+						value={buttonBackgroundColor}
+						onChange={value => setAttributes({buttonBackgroundColor: value})}
+
 					/>
+
 				</PanelBody>
 			</InspectorControls>
 
 			<div { ...useBlockProps() }>
-				<form action="">
+				<form action="#">
 					<ul>
 						<li style={{gap: inputGap}} >
 							<label style={{fontSize: labelFontSize}} htmlFor="yourname" >{nameLabel}</label>
@@ -187,7 +203,7 @@ export default function Edit(props) {
 							></textarea>
 						</li>
 						<li>
-							<button className='submitBtn'>Submit</button>
+							<button className='submitBtn' style={{fontSize: buttonFontSize, padding: buttonPadding, color: buttonTextColor, background: buttonBackgroundColor}} disabled >Submit</button>
 						</li>
 					</ul>
 				</form>
