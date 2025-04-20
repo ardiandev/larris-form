@@ -84,6 +84,7 @@ function custom_contact_form_handler() {
 
 		// Send JSON response
 		wp_send_json_success( [
+			'status'		=> 'success',
 			'message'      => '✅ Message sent successfully!',
 			'new_question' => $new_question,
 			'new_answer'   => $new_answer,

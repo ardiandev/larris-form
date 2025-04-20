@@ -108,16 +108,24 @@ $questionText = "$num1 + $num2";
             })
             .then(response => response.json())
             .then(data => {
-                if (data.status !== "success") {
-                    console.error("❌ Server error:", data);
-                    responseElement.innerHTML = "An error occurred. Please try again later.";
-                } else {
-                    responseElement.innerHTML = data.message;
-                    reloadMathQuestion(data.new_question, data.new_answer);
-                    form.reset();
-                }
 
-                submitButton.disabled = false;
+                if (!data.status === "success") {
+                console.error("❌ Server error:", data);
+                responseElement.innerHTML = "An error occurred. Please try again later.";
+                return;
+            }
+
+            responseElement.innerHTML = data.message;
+
+            // Reload the math question with new numbers
+            reloadMathQuestion(data.new_question, data.new_answer);
+
+            // Optionally reset the form fields if desired
+            form.reset();
+
+            submitButton.disabled = false; // Re-enable button
+
+
             })
             .catch(error => {
                 console.error("❌ Fetch error:", error);
