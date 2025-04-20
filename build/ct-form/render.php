@@ -109,19 +109,21 @@ $questionText = "$num1 + $num2";
                 body: formData,
             })
             .then(response => response.json())
-            .then(data => {
+            .then(({success, data}) => {
                 console.log(data)
 
-                if (!data.status === "success") {
+                if (!success || data.status !== "success") {
                 console.error("❌ Server error:", data);
                 responseElement.innerHTML = "An error occurred. Please try again later.";
                 return;
             }
 
-            responseElement.innerHTML = data.message;
+            const {message, new_question, new_answer } = data
+
+            responseElement.innerHTML = message;
 
             // Reload the math question with new numbers
-            reloadMathQuestion(data.new_question, data.new_answer);
+            reloadMathQuestion(new_question, new_answer);
 
             // Optionally reset the form fields if desired
             form.reset();
