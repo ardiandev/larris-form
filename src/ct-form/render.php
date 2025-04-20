@@ -33,22 +33,22 @@ $questionText = "$num1 + $num2";
         <ul style="list-style: none; padding: 0; margin: 0;">
             <li style="gap: <?php echo esc_attr($inputGap); ?>;">
                 <label style="font-size: <?php echo esc_attr($labelFontSize); ?>;" for="userName"><?php echo esc_html($nameLabel); ?></label>
-                <input style="font-size: <?php echo esc_attr($inputFontSize); ?>; padding: <?php echo esc_attr($inputPadding); ?>;" type="text" id="userName" name="userName" required value="John Doe" />
+                <input style="font-size: <?php echo esc_attr($inputFontSize); ?>; padding: <?php echo esc_attr($inputPadding); ?>;" type="text" id="userName" name="userName" required />
             </li>
 
             <li style="gap: <?php echo esc_attr($inputGap); ?>; margin-top: <?php echo esc_attr($inputMarginTop); ?>;">
                 <label style="font-size: <?php echo esc_attr($labelFontSize); ?>;" for="userSubject"><?php echo esc_html($subjectLabel); ?></label>
-                <input style="font-size: <?php echo esc_attr($inputFontSize); ?>; padding: <?php echo esc_attr($inputPadding); ?>;" type="text" id="userSubject" name="userSubject" required value="Job Offer" />
+                <input style="font-size: <?php echo esc_attr($inputFontSize); ?>; padding: <?php echo esc_attr($inputPadding); ?>;" type="text" id="userSubject" name="userSubject" required />
             </li>
 
             <li style="gap: <?php echo esc_attr($inputGap); ?>; margin-top: <?php echo esc_attr($inputMarginTop); ?>;">
                 <label style="font-size: <?php echo esc_attr($labelFontSize); ?>;" for="userEmail"><?php echo esc_html($emailLabel); ?></label>
-                <input style="font-size: <?php echo esc_attr($inputFontSize); ?>; padding: <?php echo esc_attr($inputPadding); ?>;" type="email" id="userEmail" name="userEmail" required value="john@domain.com" />
+                <input style="font-size: <?php echo esc_attr($inputFontSize); ?>; padding: <?php echo esc_attr($inputPadding); ?>;" type="email" id="userEmail" name="userEmail" required />
             </li>
 
             <li style="gap: <?php echo esc_attr($inputGap); ?>; margin-top: <?php echo esc_attr($inputMarginTop); ?>;">
                 <label style="font-size: <?php echo esc_attr($labelFontSize); ?>;" for="userMessage"><?php echo esc_html($messageLabel); ?></label>
-                <textarea style="font-size: <?php echo esc_attr($inputFontSize); ?>; padding: <?php echo esc_attr($inputPadding); ?>; min-height: <?php echo esc_attr($textareaHeight); ?>;" name="userMessage" id="userMessage" required>This is message</textarea>
+                <textarea style="font-size: <?php echo esc_attr($inputFontSize); ?>; padding: <?php echo esc_attr($inputPadding); ?>; min-height: <?php echo esc_attr($textareaHeight); ?>;" name="userMessage" id="userMessage" required></textarea>
             </li>
 
             <li style="gap: <?php echo esc_attr($inputGap); ?>; margin-top: <?php echo esc_attr($inputMarginTop); ?>;">
