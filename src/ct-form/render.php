@@ -51,8 +51,8 @@ $questionText = "$num1 + $num2";
                 <textarea style="font-size: <?php echo esc_attr($inputFontSize); ?>; padding: <?php echo esc_attr($inputPadding); ?>; min-height: <?php echo esc_attr($textareaHeight); ?>;" name="userMessage" id="userMessage" required>This is message</textarea>
             </li>
 
-            <li style="margin-top: <?php echo esc_attr($inputMarginTop); ?>;">
-                <label for="user-answer">What is <span id="math-question"><?php echo esc_html($questionText); ?></span>?</label>
+            <li style="gap: <?php echo esc_attr($inputGap); ?>; margin-top: <?php echo esc_attr($inputMarginTop); ?>;">
+                <label style="font-size: <?php echo esc_attr($labelFontSize); ?>;"  for="user-answer">What is <span id="math-question"><?php echo esc_html($questionText); ?></span>?</label>
                 <input id="user-answer" class="larris-contact-form__input" type="text" name="ccf_math" required />
                 <input id="answer-key" type="hidden" name="ccf_math_answer" value="<?php echo esc_attr($answer); ?>" />
                 <p id="warning-input" style="color: red; display: none;">Incorrect answer. Please try again.</p>
