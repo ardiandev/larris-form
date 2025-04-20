@@ -66,6 +66,8 @@ $questionText = "$num1 + $num2";
                     background-color: <?php echo esc_attr($buttonBackgroundColor); ?>;
                 ">Submit</button>
             </li>
+            <input type="hidden" name="ccf_nonce" value="<?php echo wp_create_nonce('ccf_form_nonce'); ?>">
+            <input type="text" name="ccf_honeypot" value="" style="display:none;">
         </ul>
     </form>
 
@@ -108,6 +110,7 @@ $questionText = "$num1 + $num2";
             })
             .then(response => response.json())
             .then(data => {
+                console.log(data)
 
                 if (!data.status === "success") {
                 console.error("❌ Server error:", data);
