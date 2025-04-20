@@ -83,7 +83,7 @@ function custom_contact_form_handler() {
 		$new_question  = "What is $num1 + $num2?";
 
 		// Send JSON response
-		echo json_encode( [
+		wp_send_json_success( [
 			'status'		=> 'success',
 			'message'      => '✅ Message sent successfully!',
 			'new_question' => $new_question,
