@@ -1,4 +1,4 @@
-name: Deploy CT Contact Form
+name: Deploy Larris Form
 
 on:
   push:

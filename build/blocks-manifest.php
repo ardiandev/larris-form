@@ -1,12 +1,12 @@
 <?php
 // This file is generated. Do not modify it manually.
 return array(
-	'ct-form' => array(
+	'larris-form' => array(
 		'$schema' => 'https://schemas.wp.org/trunk/block.json',
 		'apiVersion' => 3,
-		'name' => 'create-block/ct-form',
+		'name' => 'create-block/larris-form',
 		'version' => '0.1.0',
-		'title' => 'Ct Form',
+		'title' => 'Larris Form',
 		'category' => 'widgets',
 		'icon' => 'email',
 		'description' => 'Example block scaffolded with Create Block tool.',
@@ -25,7 +25,7 @@ return array(
 			),
 			'align' => true
 		),
-		'textdomain' => 'ct-form',
+		'textdomain' => 'larris-form',
 		'editorScript' => 'file:./index.js',
 		'editorStyle' => 'file:./index.css',
 		'style' => 'file:./style-index.css',
