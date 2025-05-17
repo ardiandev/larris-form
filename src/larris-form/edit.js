@@ -43,20 +43,10 @@ export default function Edit(props) {
 
 	const { attributes, setAttributes } = props
 	const {
-		textareaHeight,
-		inputGap,
-		inputFontSize,
-		labelFontSize,
-		inputPadding,
-		inputMarginTop,
 		nameLabel,
 		subjectLabel,
 		emailLabel,
 		messageLabel,
-		buttonFontSize,
-		buttonPadding,
-		buttonTextColor,
-		buttonBackgroundColor
 	} = attributes;
 
 
