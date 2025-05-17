@@ -80,7 +80,7 @@ function custom_contact_form_handler() {
 		$num1          = rand( 1, 10 );
 		$num2          = rand( 1, 10 );
 		$new_answer    = $num1 + $num2;
-		$new_question  = "What is $num1 + $num2?";
+		$new_question  = "$num1 + $num2?";
 
 		// Send JSON response
 		wp_send_json_success( [

@@ -4,18 +4,6 @@
  * @see https://github.com/WordPress/gutenberg/blob/trunk/docs/reference-guides/block-api/block-metadata.md#render
  */
 
-$inputHeight             = $attributes["inputHeight"];
-$inputGap               = $attributes["inputGap"];
-$labelFontSize          = $attributes["labelFontSize"];
-$inputFontSize          = $attributes["inputFontSize"];
-$inputPadding           = $attributes["inputPadding"];
-$inputMarginTop         = $attributes["inputMarginTop"];
-$buttonFontSize         = $attributes["buttonFontSize"];
-$buttonPadding          = $attributes["buttonPadding"];
-$buttonTextColor        = $attributes["buttonTextColor"];
-$buttonBackgroundColor  = $attributes["buttonBackgroundColor"];
-$textareaHeight         = $attributes["textareaHeight"];
-
 $nameLabel    = $attributes["nameLabel"];
 $subjectLabel = $attributes["subjectLabel"];
 $emailLabel   = $attributes["emailLabel"];

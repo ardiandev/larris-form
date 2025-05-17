@@ -1,8 +1,6 @@
 /**
  * The following styles get applied both on the front of your site
  * and in the editor.
- *
- * Replace them with your own styles or remove the file completely.
  */
 
 .wp-block-create-block-larris-form {
@@ -40,7 +38,7 @@
   border-radius: 5px;
   background-color: white;
   outline: none;
-  border: 1px solid black; /* Black border for starter */
+  border: 1px solid black;  
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
@@ -48,21 +46,21 @@
 .contact-form__input:focus,
 .contact-form__textarea:focus,
 .contact-form__email:focus {
-  border-color: #ef5350; /* Softer red for error */
+  border-color: #ef5350; 
   box-shadow: 0 1px 3px rgba(239, 83, 80, 0.3);
 }
 
 .contact-form__input.is-valid,
 .contact-form__email.is-valid,
 .contact-form__textarea.is-valid {
-  border-color: #64b5f6; /* Softer blue for valid */
+  border-color: #64b5f6; 
   box-shadow: 0 1px 3px rgba(100, 181, 246, 0.3);
 }
 
 .contact-form__email.is-error,
 .contact-form__input.is-error,
 .contact-form__textarea.is-error {
-  border-color: #ef5350; /* Softer red for error */
+  border-color: #ef5350; 
   box-shadow: 0 1px 3px rgba(239, 83, 80, 0.3);
 }
 
@@ -74,35 +72,35 @@
 
 .contact-form__button_container {
   display: block;
-  margin-top: 15px; /* Increased margin for better spacing */
+  margin-top: 15px;  
 }
 
 .contact-form__button {
   background-color: black;
   color: white;
-  padding: 10px 25px; /* Increased padding for a more substantial button */
-  font-size: 1rem; /* Slightly larger font size */
+  padding: 10px 25px;  
+  font-size: 1rem;  
   border-radius: 10px;
-  border: none; /* Remove default button border */
+  border: none;  
   cursor: pointer;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Subtle initial shadow */
-  transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease; /* Smooth transitions */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);  
+  transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;  
 }
 
 .contact-form__button:hover {
-  background-color: #333; /* Darken slightly on hover */
-  box-shadow: 0 3px 7px rgba(0, 0, 0, 0.4); /* Slightly stronger shadow on hover */
+  background-color: #333;  
+  box-shadow: 0 3px 7px rgba(0, 0, 0, 0.4);  
 }
 
 .contact-form__button:active {
-  background-color: #555; /* Darker when pressed */
-  transform: translateY(1px); /* Move down slightly for a "pressed" effect */
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3); /* Reduced shadow when pressed */
+  background-color: #555;  
+  transform: translateY(1px);  
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3); 
 }
 
 .contact-form__button:focus {
-  outline: none; /* Remove default focus outline */
-  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.5); /* Add a custom focus indicator */
+  outline: none; 
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.5); 
 }
 
 
