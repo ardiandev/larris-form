@@ -23,7 +23,7 @@ import './editor.scss';
 
 /**
  * The edit function describes the structure of your block in the context of the
- * editor. This represents what the editor will render when the block is used.
+ * editor. This represents what the editor 54 render when the block is used.
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-edit-save/#edit
  *
@@ -70,16 +70,21 @@ export default function Edit(props) {
 			<InspectorControls>
 				<PanelBody title="Form Settings" initialOpen={true}>
 					<TextControl
-						label="Email Recipent"
+						label="Sender Email"
 						value=""
+						help="Enter a valid email address from your domain, e.g., admin@mydomain.com"
 					/>
-					<p>Learn how to set up and style the contact form and configure SMTP by reading the documentation: <a href='#' target='_blank' >View Guide</a></p>
 					<TextControl
-						label="Email Subject"
+						label="Recipient Email"
 						value=""
+						help="Email address where form submissions will be sent, e.g., john@gmail.com"
 					/>
-					<p>This subject will appear in the email you receive when someone submits the form.</p>
+					<p>
+						If you experience issues setting up email or SMTP, please refer to the&nbsp;
+						<a href="#" target="_blank" rel="noopener noreferrer">documentation</a>.
+					</p>
 				</PanelBody>
+
 				<PanelBody title="Label Text Settings" initialOpen={true}>
 					<TextControl
 						value={nameLabel}

@@ -1,16 +1,18 @@
 <?php
 /**
  * Plugin Name:       Larris Form
- * Description:       Example block scaffolded with Create Block tool.
+ * Description:       Custom WordPress block-based contact form with spam protection and Brevo email integration.
  * Version:           0.1.0
  * Requires at least: 6.7
  * Requires PHP:      7.4
- * Author:            The WordPress Contributors
+ * Author:            Ardian Pradana
+ * Author URI:        https://ardianpradana.com/
+ * Plugin URI:        https://github.com/ardiandev/larris-form
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:       larris-form
  *
- * @package CreateBlock
+ * @package LarrisForm
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -69,8 +71,9 @@ function custom_contact_form_handler() {
 	}
 
 // Prepare email
-$emailRecipient = "ardianysp18@gmail.com"; // Direct to Gmail = no forwarding issues
-$fromEmail      = "admin@ardianpradana.com"; // Verified sender via Brevo
+$emailRecipient = get_option('larris_recipient_email');  
+$fromEmail      = get_option('larris_sender_email');
+
 $to             = $emailRecipient;
 
 $headers  = "From: $name <$fromEmail>\r\n";
@@ -101,3 +104,6 @@ $body = "Name: $name\nEmail: $email\nSubject: $subject\n\nMessage:\n$message";
 
 add_action( 'wp_ajax_nopriv_custom_contact_form_handler', 'custom_contact_form_handler' );
 add_action( 'wp_ajax_custom_contact_form_handler', 'custom_contact_form_handler' );
+
+
+require_once plugin_dir_path( __FILE__ ) . 'includes/admin-panel.php';

@@ -48,45 +48,11 @@ return array(
 				'type' => 'string',
 				'default' => 'Your Message'
 			),
-			'inputFontSize' => array(
-				'type' => 'string',
-				'default' => '16px'
+			'senderEmail' => array(
+				'type' => 'string'
 			),
-			'labelFontSize' => array(
-				'type' => 'string',
-				'default' => '18px'
-			),
-			'inputPadding' => array(
-				'type' => 'string',
-				'default' => '10px'
-			),
-			'inputMarginTop' => array(
-				'type' => 'string',
-				'default' => '5px'
-			),
-			'textareaHeight' => array(
-				'type' => 'string',
-				'default' => '150px'
-			),
-			'inputGap' => array(
-				'type' => 'string',
-				'default' => '5px'
-			),
-			'buttonFontSize' => array(
-				'type' => 'string',
-				'default' => '18px'
-			),
-			'buttonPadding' => array(
-				'type' => 'string',
-				'default' => '10px'
-			),
-			'buttonTextColor' => array(
-				'type' => 'string',
-				'default' => '#ffff'
-			),
-			'buttonBackgroundColor' => array(
-				'type' => 'string',
-				'default' => 'black'
+			'recipentEmail' => array(
+				'type' => 'string'
 			)
 		)
 	)

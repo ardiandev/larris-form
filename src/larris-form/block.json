@@ -43,45 +43,11 @@
 			"type":"string",
 			"default": "Your Message"
 		},
-		"inputFontSize": {
-			"type": "string",
-			"default": "16px"
+		"senderEmail": {
+			"type": "string"
 		},
-		"labelFontSize": {
-			"type": "string",
-			"default": "18px"
-		},
-		"inputPadding": {
-			"type": "string",
-			"default": "10px"
-		},
-		"inputMarginTop": {
-			"type": "string",
-			"default": "5px"
-		},
-		"textareaHeight": {
-			"type": "string",
-			"default": "150px"
-		},
-		"inputGap": {
-			"type": "string",
-			"default": "5px"
-		},
-		"buttonFontSize": {
-			"type": "string",
-			"default": "18px"
-		},
-		"buttonPadding": {
-			"type": "string",
-			"default": "10px"
-		},
-		"buttonTextColor": {
-			"type": "string",
-			"default": "#ffff"
-		},
-		"buttonBackgroundColor": {
-			"type": "string",
-			"default": "black"
+		"recipentEmail": {
+			"type": "string"
 		}
 
 	}
