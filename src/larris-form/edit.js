@@ -68,23 +68,6 @@ export default function Edit(props) {
 	return (
 		<>
 			<InspectorControls>
-				<PanelBody title="Form Settings" initialOpen={true}>
-					<TextControl
-						label="Sender Email"
-						value=""
-						help="Enter a valid email address from your domain, e.g., admin@mydomain.com"
-					/>
-					<TextControl
-						label="Recipient Email"
-						value=""
-						help="Email address where form submissions will be sent, e.g., john@gmail.com"
-					/>
-					<p>
-						If you experience issues setting up email or SMTP, please refer to the&nbsp;
-						<a href="#" target="_blank" rel="noopener noreferrer">documentation</a>.
-					</p>
-				</PanelBody>
-
 				<PanelBody title="Label Text Settings" initialOpen={true}>
 					<TextControl
 						value={nameLabel}
