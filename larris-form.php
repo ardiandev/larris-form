@@ -68,12 +68,16 @@ function custom_contact_form_handler() {
 		wp_send_json_error( [ 'message' => '❌ Incorrect answer to the math question.' ] );
 	}
 
-	// Prepare email
-	$emailRecipient = "admin@ardianpradana.com";
-	$to      = $emailRecipient;
-	$headers = "From: $name <$email>\r\nReply-To: $email\r\nContent-Type: text/plain; charset=UTF-8";
-	$body    = "Name: $name\nEmail: $email\nSubject: $subject\n\nMessage:\n$message";
+// Prepare email
+$emailRecipient = "ardianysp18@gmail.com"; // Direct to Gmail = no forwarding issues
+$fromEmail      = "admin@ardianpradana.com"; // Verified sender via Brevo
+$to             = $emailRecipient;
 
+$headers  = "From: $name <$fromEmail>\r\n";
+$headers .= "Reply-To: $email\r\n";
+$headers .= "Content-Type: text/plain; charset=UTF-8";
+
+$body = "Name: $name\nEmail: $email\nSubject: $subject\n\nMessage:\n$message";
 	// Send email
 	if ( wp_mail( $to, $subject, $body, $headers ) ) {
 		// Prepare new CAPTCHA
