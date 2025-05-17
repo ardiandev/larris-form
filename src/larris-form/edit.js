@@ -49,12 +49,6 @@ export default function Edit(props) {
 		messageLabel,
 	} = attributes;
 
-
-
-	const handleInputGap = (value) => {
-		setAttributes({ inputGap: value })
-	}
-
 	return (
 		<>
 			<InspectorControls>
