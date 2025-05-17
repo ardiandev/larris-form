@@ -1,17 +1,18 @@
-const inputField = document.querySelectorAll(".contact-form__input ");
+const startApp = () => {
+  const inputField = document.querySelectorAll(".contact-form__input ");
 
 inputField.forEach(item => {
-	item.addEventListener("input" , () => {
+  item.addEventListener("input", () => {
 
-		if (item.value.length > 0) {
-			item.classList.add("is-valid")
+    if (item.value.length > 0) {
+      item.classList.add("is-valid")
       item.classList.remove("is-error");
-		}
+    }
     else {
       item.classList.remove("is-valid");
       item.classList.add("is-error");
     }
-	})
+  })
 })
 
 
@@ -46,9 +47,10 @@ textareaEl.addEventListener("input" , () => {
   else {
   textareaEl.classList.remove("is-valid");
   textareaEl.classList.add("is-error");
-  }
-})
+    }
+  })
 
+}
 
 
 
@@ -68,6 +70,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const submitBtn = document.querySelector("#submitBtn");
   changeFont(submitBtn, labelEl)
+
+  startApp()
 
 
 });
