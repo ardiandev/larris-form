@@ -30,8 +30,8 @@ import './editor.scss';
  * @return {Element} Element to render.
  */
 
-import {useState, } from "@wordpress/element";
-import {TextControl ,PanelBody, ColorPalette} from "@wordpress/components"
+import { useState, } from "@wordpress/element";
+import { TextControl, PanelBody, ColorPalette } from "@wordpress/components"
 
 
 export default function Edit(props) {
@@ -41,13 +41,13 @@ export default function Edit(props) {
 	const [email, setEmail] = useState("John@johndoe.com")
 	const [message, setMessage] = useState("This is example of message form.")
 
-	const {attributes, setAttributes} = props
+	const { attributes, setAttributes } = props
 	const {
 		textareaHeight,
-		inputGap, 
+		inputGap,
 		inputFontSize,
-		labelFontSize, 
-		inputPadding, 
+		labelFontSize,
+		inputPadding,
 		inputMarginTop,
 		nameLabel,
 		subjectLabel,
@@ -62,7 +62,7 @@ export default function Edit(props) {
 
 
 	const handleInputGap = (value) => {
-		setAttributes({inputGap: value})
+		setAttributes({ inputGap: value })
 	}
 
 	return (
@@ -73,7 +73,7 @@ export default function Edit(props) {
 						label="Email Recipent"
 						value=""
 					/>
-					<p>Learn how to set up and style the contact form and configure SMTP by reading the documentation: <a href='#' target='_blank' >View Guide</a></p>					
+					<p>Learn how to set up and style the contact form and configure SMTP by reading the documentation: <a href='#' target='_blank' >View Guide</a></p>
 					<TextControl
 						label="Email Subject"
 						value=""
@@ -83,127 +83,66 @@ export default function Edit(props) {
 				<PanelBody title="Label Text Settings" initialOpen={true}>
 					<TextControl
 						value={nameLabel}
-						onChange={value => setAttributes({nameLabel: value})}
-					/>	
+						onChange={value => setAttributes({ nameLabel: value })}
+					/>
 					<TextControl
 						value={subjectLabel}
-						onChange={value => setAttributes({subjectLabel: value})}
-					/>	
+						onChange={value => setAttributes({ subjectLabel: value })}
+					/>
 					<TextControl
-					value={emailLabel}
-					onChange={value => setAttributes({emailLabel: value})}
-					/>		
+						value={emailLabel}
+						onChange={value => setAttributes({ emailLabel: value })}
+					/>
 					<TextControl
 						value={messageLabel}
-						onChange={value => setAttributes({messageLabel: value})}
-					/>						
+						onChange={value => setAttributes({ messageLabel: value })}
+					/>
 				</PanelBody>
 
 			</InspectorControls>
-			<InspectorControls group="styles">
-				<PanelBody title="Form Settings" initialOpen={false}>
-						<TextControl
-							label="Label Font Size"
-							value={labelFontSize}
-							onChange={(value) => setAttributes({labelFontSize: value})}
-							help="Set the input height (e.g., 40px, 2em, etc.)"
-						/>	
-						<TextControl
-							label="Input Font Size"
-							value={inputFontSize}
-							onChange={(value) => setAttributes({inputFontSize: value})}
-							help="Set the input height (e.g., 40px, 2em, etc.)"
-						/>	
-						<TextControl
-							label="Padding"
-							value={inputPadding}
-							onChange={(value) => { setAttributes({inputPadding: value})}}
-							help="You can set like 10px or 10px 30px"
-						/>
-						<TextControl
-							label="Margin Top"
-							value={inputMarginTop}
-							onChange={value => setAttributes({inputMarginTop: value})}
-							help="Set the input height (e.g., 40px, 2em, etc.)"
-						/>
-						<TextControl
-							label="Gap"
-							value={inputGap}
-							onChange={handleInputGap}
-							help="Set the input height (e.g., 40px, 2em, etc.)"
-						/>
-						<TextControl
-							label="Textarea min height"
-							value={textareaHeight}
-							onChange={value => setAttributes({textareaHeight: value})}
-							help="Set the input height (e.g., 40px, 2em, etc.)"
-						/>
-				</PanelBody>
-				<PanelBody title="Button Settings" initialOpen={false}>
-					<TextControl
-						label="Font Size"
-						value={buttonFontSize}
-						onChange={value => setAttributes({buttonFontSize: value})}
-						help="Set the input height (e.g., 40px, 2em, etc.)"
-					/>
-					<TextControl
-						label="Padding"
-						value={buttonPadding}
-						onChange={value => setAttributes({buttonPadding: value})}
-						help="Set the input height (e.g., 40px, 2em, etc.)"
-					/>
-					<p className='components-base-control__label button'>Text</p>
-					< ColorPalette
-						label="Text Color"
-						colors={[
-							{ name: 'white', color: '#ffff' },
-							{ name: 'black', color: '#000000' },
-						  ]}
-						value={buttonTextColor}
-						onChange={value => setAttributes({buttonTextColor: value})}
-
-					/>
-					<p className='components-base-control__label button'>Background</p>
-					< ColorPalette
-						label="Text Color"
-						colors={[
-							{ name: 'black', color: '#000000' },
-							{ name: 'blue', color: '#007bff' },
-							{ name: 'yellow', color: '#FFB702' },
-						  ]}
-						value={buttonBackgroundColor}
-						onChange={value => setAttributes({buttonBackgroundColor: value})}
-
-					/>
-
-				</PanelBody>
-			</InspectorControls>
-
-			<div { ...useBlockProps() }>
-				<form action="#">
-					<ul>
-						<li style={{gap: inputGap}} >
-							<label style={{fontSize: labelFontSize}} htmlFor="yourname" >{nameLabel}</label>
-							<input style={{height: "", fontSize: inputFontSize, padding: inputPadding}} value={name} onChange={(event) => {setName(event.target.value)}} type="text" id='yourname' name="yourname" />
+			<div className="larris-contact-form" {...useBlockProps()}>
+				<form className="contact-form__form" action="#">
+					<ul className="contact-form__list">
+						<li className="contact-form__item">
+							<label className="contact-form__label" htmlFor="yourname">{nameLabel}</label>
+							<input
+								className="contact-form__input"
+								onChange={(event) => setName(event.target.value)}
+								type="text"
+								id="yourname"
+								name="yourname"
+							/>
 						</li>
-						<li style={{gap: inputGap, marginTop: inputMarginTop }} >
-							<label style={{fontSize: labelFontSize}}  htmlFor="yourname">{subjectLabel}</label>
-							<input style={{height: "", fontSize: inputFontSize, padding: inputPadding}} value={subject} onChange={(event) => {setSubject(event.target.value)}} type="text" id='yourname' name="yourname" />
+						<li className="contact-form__item">
+							<label className="contact-form__label" htmlFor="subject">{subjectLabel}</label>
+							<input
+								className="contact-form__input"
+								onChange={(event) => setSubject(event.target.value)}
+								type="text"
+								id="subject"
+								name="subject"
+							/>
 						</li>
-						<li style={{gap: inputGap, marginTop: inputMarginTop }} >
-							<label style={{fontSize: labelFontSize}} htmlFor="youremail">{emailLabel}</label>
-							<input style={{height: "", fontSize: inputFontSize, padding: inputPadding}} value={email} onChange={(event) => {setEmail(event.target.value)}} type="text" id='youremail' name="youremail" />
+						<li className="contact-form__item">
+							<label className="contact-form__label" htmlFor="youremail">{emailLabel}</label>
+							<input
+								className="contact-form__input"
+								onChange={(event) => setEmail(event.target.value)}
+								id="youremail"
+								name="youremail"
+								type="email"
+							/>
 						</li>
-						<li style={{gap: inputGap, marginTop: inputMarginTop,  }} >
-							<label style={{fontSize: labelFontSize}} htmlFor="yourmessage">{messageLabel}</label>
-							<textarea 
-							style={{fontSize: inputFontSize, padding: inputPadding, minHeight: textareaHeight}}
-							value={message}
-							onChange={(event) => {setMessage(event.target.value)}}							
+						<li className="contact-form__item">
+							<label className="contact-form__label" htmlFor="yourmessage">{messageLabel}</label>
+							<textarea
+								className="contact-form__textarea"
+								value={message}
+								onChange={(event) => setMessage(event.target.value)}
 							></textarea>
 						</li>
-						<li>
-							<button className='submitBtn' style={{fontSize: buttonFontSize, padding: buttonPadding, color: buttonTextColor, background: buttonBackgroundColor}} disabled >Submit</button>
+						<li className="contact-form__button_container">
+							<button className="contact-form__button" disabled>Submit</button>
 						</li>
 					</ul>
 				</form>

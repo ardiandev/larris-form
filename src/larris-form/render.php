@@ -28,43 +28,38 @@ $answer = $num1 + $num2;
 $questionText = "$num1 + $num2";
 ?>
 
-<div <?php echo get_block_wrapper_attributes(); ?>>
-    <form id="formData" method="post">
-        <ul style="list-style: none; padding: 0; margin: 0;">
-            <li style="gap: <?php echo esc_attr($inputGap); ?>;">
-                <label style="font-size: <?php echo esc_attr($labelFontSize); ?>;" for="userName"><?php echo esc_html($nameLabel); ?></label>
-                <input style="font-size: <?php echo esc_attr($inputFontSize); ?>; padding: <?php echo esc_attr($inputPadding); ?>;" type="text" id="userName" name="userName" required />
+<div class="larris-contact-form" <?php echo get_block_wrapper_attributes(); ?>>
+    <form id="formData" class="contact-form__form" method="post">
+        <ul class="contact-form__list">
+            <li class="contact-form__item" >
+                <label class="contact-form__label" for="userName"><?php echo esc_html($nameLabel); ?></label>
+                <input class="contact-form__input" type="text" id="userName" name="userName" required />
             </li>
 
-            <li style="gap: <?php echo esc_attr($inputGap); ?>; margin-top: <?php echo esc_attr($inputMarginTop); ?>;">
-                <label style="font-size: <?php echo esc_attr($labelFontSize); ?>;" for="userSubject"><?php echo esc_html($subjectLabel); ?></label>
-                <input style="font-size: <?php echo esc_attr($inputFontSize); ?>; padding: <?php echo esc_attr($inputPadding); ?>;" type="text" id="userSubject" name="userSubject" required />
+            <li class="contact-form__item" >
+                <label class="contact-form__label"  for="userSubject"><?php echo esc_html($subjectLabel); ?></label>
+                <input class="contact-form__input" type="text" id="userSubject" name="userSubject" required />
             </li>
 
-            <li style="gap: <?php echo esc_attr($inputGap); ?>; margin-top: <?php echo esc_attr($inputMarginTop); ?>;">
-                <label style="font-size: <?php echo esc_attr($labelFontSize); ?>;" for="userEmail"><?php echo esc_html($emailLabel); ?></label>
-                <input style="font-size: <?php echo esc_attr($inputFontSize); ?>; padding: <?php echo esc_attr($inputPadding); ?>;" type="email" id="userEmail" name="userEmail" required />
+            <li class="contact-form__item" >
+                <label class="contact-form__label" for="userEmail"><?php echo esc_html($emailLabel); ?></label>
+                <input class="contact-form__email" type="email" id="userEmail" name="userEmail" required />
             </li>
 
-            <li style="gap: <?php echo esc_attr($inputGap); ?>; margin-top: <?php echo esc_attr($inputMarginTop); ?>;">
-                <label style="font-size: <?php echo esc_attr($labelFontSize); ?>;" for="userMessage"><?php echo esc_html($messageLabel); ?></label>
-                <textarea style="font-size: <?php echo esc_attr($inputFontSize); ?>; padding: <?php echo esc_attr($inputPadding); ?>; min-height: <?php echo esc_attr($textareaHeight); ?>;" name="userMessage" id="userMessage" required></textarea>
+            <li class="contact-form__item" >
+                <label class="contact-form__label" ><?php echo esc_html($messageLabel); ?></label>
+                <textarea class="contact-form__textarea" name="userMessage" id="userMessage" required></textarea>
             </li>
 
-            <li style="gap: <?php echo esc_attr($inputGap); ?>; margin-top: <?php echo esc_attr($inputMarginTop); ?>;">
-                <label style="font-size: <?php echo esc_attr($labelFontSize); ?>;"  for="user-answer">What is <span id="math-question"><?php echo esc_html($questionText); ?></span>?</label>
-                <input style="font-size: <?php echo esc_attr($inputFontSize); ?>; padding: <?php echo esc_attr($inputPadding); ?>;" id="user-answer" class="larris-contact-form__input" type="text" name="ccf_math" required />
+            <li class="contact-form__item" >
+                <label class="contact-form__label"  for="user-answer">What is <span id="math-question"><?php echo esc_html($questionText); ?></span>?</label>
+                <input class="contact-form__input" id="user-answer" class="larris-contact-form__input" type="number" name="ccf_math" required />
                 <input id="answer-key" type="hidden" name="ccf_math_answer" value="<?php echo esc_attr($answer); ?>" />
                 <p id="warning-input" style="color: red; display: none;">Incorrect answer. Please try again.</p>
             </li>
 
-            <li style="margin-top: <?php echo esc_attr($inputMarginTop); ?>;">
-                <button type="submit" class="submitBtn" style="
-                    font-size: <?php echo esc_attr($buttonFontSize); ?>;
-                    padding: <?php echo esc_attr($buttonPadding); ?>;
-                    color: <?php echo esc_attr($buttonTextColor); ?>;
-                    background-color: <?php echo esc_attr($buttonBackgroundColor); ?>;
-                ">Submit</button>
+            <li class="contact-form__button_container" >
+                <button type="submit" id="submitBtn" class="contact-form__button">Submit</button>
             </li>
             <input type="hidden" name="ccf_nonce" value="<?php echo wp_create_nonce('ccf_form_nonce'); ?>">
             <input type="text" name="ccf_honeypot" value="" style="display:none;">
@@ -81,7 +76,7 @@ $questionText = "$num1 + $num2";
         const form = document.getElementById("formData");
         const warningEl = document.getElementById("warning-input");
         const responseElement = document.getElementById("ccf-response");
-        const submitButton = document.querySelector(".submitBtn");
+        const submitButton = document.querySelector("#submitBtn");
 
         if (!form || !warningEl || !responseElement || !submitButton) {
             console.error("❌ Required elements not found!");
